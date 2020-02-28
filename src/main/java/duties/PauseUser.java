@@ -17,7 +17,7 @@ public class PauseUser {
             JOptionPane.showMessageDialog(new JFrame(), "Please select a user", "Error Message", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String email = (String) model.getValueAt(row, 0);
+//        String email = (String) model.getValueAt(row, 0);
         String status = (String) model.getValueAt(row, 2);
         if (!status.equals("PAUSE")) {
             AddPassword pwd = new AddPassword();
