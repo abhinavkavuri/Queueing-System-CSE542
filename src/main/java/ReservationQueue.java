@@ -122,7 +122,7 @@ public class ReservationQueue {
 		mainFrame.getContentPane().add(scrollPane);
 		Object[] headers = new String[] { "Queue Order", "Name", "Status" };
 		int value = new Random().nextInt(4);
-		Object[][] data = { { 1, "John", Student.Status.UNPAUSE.toString() }, { 2, "Jane", Student.Status.UNPAUSE.toString() }, { 3, "Joe", Student.Status.UNPAUSE.toString() }, { 4, "Jain", Student.Status.UNPAUSE.toString() }, };
+		Object[][] data = { { 1, "John", Student.Status.UNPAUSED.toString() }, { 2, "Jane", Student.Status.UNPAUSED.toString() }, { 3, "Joe", Student.Status.UNPAUSED.toString() }, { 4, "Jain", Student.Status.UNPAUSED.toString() }, };
 		displayTable = new JTable(new DefaultTableModel(new Object[0][0], headers));
 		if (value != 0) {
 			for (int i = 0; i < value; i++) {
@@ -144,7 +144,7 @@ public class ReservationQueue {
 				if (me.getClickCount() == 1) { // to detect doble click events
 					DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
 					String value =  displayTable.getValueAt(displayTable.getSelectedRow(), 2).toString();
-					if (value.equals(Student.Status.UNPAUSE.toString())) {
+					if (value.equals(Student.Status.UNPAUSED.toString())) {
 						upauseBtn.setEnabled(false);
 						pauseBtn.setEnabled(true);
 					} else {
@@ -201,7 +201,7 @@ public class ReservationQueue {
 			pwd.insertPwd(student);
 			pwd.dispose();
 			map.put(student.getEmail(), new String[] { student.getUserName(), student.getPwd() });
-			addEntryToTable(new Object[] { 0, student.getUserName(), Student.Status.UNPAUSE.toString() }, emptyLabel);
+			addEntryToTable(new Object[] { 0, student.getUserName(), Student.Status.UNPAUSED.toString() }, emptyLabel);
 		});
 	}
 

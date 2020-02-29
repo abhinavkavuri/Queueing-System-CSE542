@@ -39,6 +39,6 @@ public class Student {
 	}
 
 	public enum Status {
-		PAUSE, UNPAUSE;
+		PAUSED, UNPAUSED;
 	}
 }

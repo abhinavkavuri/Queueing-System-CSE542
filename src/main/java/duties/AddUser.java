@@ -49,7 +49,7 @@ public class AddUser extends JFrame {
 	public Student addEntry() {
 		String username = userBox.getText();
 		String email = emailBox.getText();
-		final Student student = new Student(username, email, Student.Status.UNPAUSE);
+		final Student student = new Student(username, email, Student.Status.UNPAUSED);
 		return student;
 	}
 

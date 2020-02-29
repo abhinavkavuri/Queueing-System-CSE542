@@ -30,7 +30,7 @@ public class UnPauseUser {
             pwd.setVisible(true);
             pwd.submitBtn.addActionListener(e -> {
                 //TODO validate pwd
-                model.setValueAt(Student.Status.UNPAUSE.toString(), row, 2);
+                model.setValueAt(Student.Status.UNPAUSED.toString(), row, 2);
                 pwd.dispose();
             });
         } else {

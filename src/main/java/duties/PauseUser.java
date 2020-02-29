@@ -24,7 +24,7 @@ public class PauseUser {
             pwd.setVisible(true);
             pwd.submitBtn.addActionListener(e -> {
                 //TODO validate pwd
-                model.setValueAt(Student.Status.PAUSE.toString(), row, 2);
+                model.setValueAt(Student.Status.PAUSED.toString(), row, 2);
                 pwd.dispose();
             });
         } else {
