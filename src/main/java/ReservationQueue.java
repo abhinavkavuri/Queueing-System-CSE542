@@ -71,7 +71,7 @@ public class ReservationQueue {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 
-		JLabel header = Commons.defineLabel("Reservation Queue", new Font("SansSerif", Font.BOLD, 18), 400, 50, 189,
+		JLabel header = Commons.defineLabel("Student Reservation Queue", new Font("SansSerif", Font.BOLD, 18), 400, 50, 189,
 				26);
 		mainFrame.getContentPane().add(header);
 
@@ -94,7 +94,7 @@ public class ReservationQueue {
 			public void actionPerformed(ActionEvent e) {
 				DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
 				int selectedRow = displayTable.getSelectedRow();
-				removeUser(model, selectedRow, emptyLabel);
+				removeUser(model, selectedRow, emptyLabel);				
 			}
 		});
 		mainFrame.getContentPane().add(removeBtn);
@@ -120,9 +120,9 @@ public class ReservationQueue {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(138, 248, 721, 415);
 		mainFrame.getContentPane().add(scrollPane);
-		Object[] headers = new String[] { "Id", "Name", "" };
+		Object[] headers = new String[] { "Queue Order", "Name", "Status" };
 		int value = new Random().nextInt(4);
-		Object[][] data = { { 1, "John", "" }, { 2, "Jane", "" }, { 3, "Joe", "" }, { 4, "Jain", "" }, };
+		Object[][] data = { { 1, "John", Student.Status.UNPAUSE.toString() }, { 2, "Jane", Student.Status.UNPAUSE.toString() }, { 3, "Joe", Student.Status.UNPAUSE.toString() }, { 4, "Jain", Student.Status.UNPAUSE.toString() }, };
 		displayTable = new JTable(new DefaultTableModel(new Object[0][0], headers));
 		if (value != 0) {
 			for (int i = 0; i < value; i++) {
@@ -143,8 +143,8 @@ public class ReservationQueue {
 			public void mouseClicked(MouseEvent me) {
 				if (me.getClickCount() == 1) { // to detect doble click events
 					DefaultTableModel model = (DefaultTableModel) displayTable.getModel();
-					String value = (String) displayTable.getValueAt(displayTable.getSelectedRow(), 2);
-					if (value.equals("")) {
+					String value =  displayTable.getValueAt(displayTable.getSelectedRow(), 2).toString();
+					if (value.equals(Student.Status.UNPAUSE.toString())) {
 						upauseBtn.setEnabled(false);
 						pauseBtn.setEnabled(true);
 					} else {
@@ -159,7 +159,7 @@ public class ReservationQueue {
 	public void addEntryToTable(Object[] object, JLabel emptyLabel) {
 		DefaultTableModel table = (DefaultTableModel) displayTable.getModel();
 		object[0] = table.getRowCount() + 1;
-		table.addRow(object);
+		 table.addRow(object);
 		if (checkForEmpty((DefaultTableModel) displayTable.getModel())) {
 			mainFrame.getContentPane().add(emptyLabel);
 			emptyLabel.setVisible(true);
@@ -201,13 +201,13 @@ public class ReservationQueue {
 			pwd.insertPwd(student);
 			pwd.dispose();
 			map.put(student.getEmail(), new String[] { student.getUserName(), student.getPwd() });
-			addEntryToTable(new Object[] { 0, student.getUserName(), "" }, emptyLabel);
+			addEntryToTable(new Object[] { 0, student.getUserName(), Student.Status.UNPAUSE.toString() }, emptyLabel);
 		});
 	}
 
 	public void removeUser(DefaultTableModel model, int row, JLabel emptyLabel) {
 		RemoveUser user = new RemoveUser();
-		user.removeUser(model, row, (DefaultTableModel) displayTable.getModel(), mainFrame, emptyLabel);
+		user.removeUser(model, row, (DefaultTableModel) displayTable.getModel(), mainFrame, emptyLabel);		
 	}
 
 	public static boolean checkForEmpty(DefaultTableModel displayTable) {

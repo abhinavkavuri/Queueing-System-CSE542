@@ -25,12 +25,12 @@ public class UnPauseUser {
         }
 //        String email = (String) model.getValueAt(row, 0);
         String status = (String) model.getValueAt(row, 2);
-        if (!status.equals("")) {
+        if (!status.equals("UNPAUSE")) {
             AddPassword pwd = new AddPassword();
             pwd.setVisible(true);
             pwd.submitBtn.addActionListener(e -> {
                 //TODO validate pwd
-                model.setValueAt("", row, 2);
+                model.setValueAt(Student.Status.UNPAUSE.toString(), row, 2);
                 pwd.dispose();
             });
         } else {
